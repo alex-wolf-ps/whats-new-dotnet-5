@@ -1,0 +1,27 @@
+﻿@namespace WiredBrainCoffeeClient.Components
+@using WiredBrainCoffee.Models
+
+<div class="order-wrapper">
+    <div class="order-item">
+        <span><strong>@OrderItem.Name</strong></span><span>@OrderItem.Price.ToString("C")</span>
+    </div>
+    @if (OrderItem.Extras != null)
+    {
+        <ul class="extras-list">
+            <li><span>Milk:</span><span>@OrderItem.Extras.Milk</span></li>
+            <li><span>Creamer:</span><span>@OrderItem.Extras.Creamer</span></li>
+            <li><span>Flavor:</span><span>@OrderItem.Extras.Flavor</span></li>
+            <li><span>Topping:</span><span>@OrderItem.Extras.Topping</span></li>
+            <li><span>Notes:</span><span>@OrderItem.Extras.Notes</span></li>
+        </ul>
+    }
+    <div><span class="remove-item" @onclick="(() => OnClickCallback.InvokeAsync(OrderItem))">Remove</span></div>
+</div>
+
+@code {
+    [Parameter]
+    public OrderItem OrderItem { get; set; }
+
+    [Parameter]
+    public EventCallback<OrderItem> OnClickCallback { get; set; }
+}

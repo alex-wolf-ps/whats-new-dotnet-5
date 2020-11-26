@@ -1,0 +1,24 @@
+﻿@namespace WiredBrainCoffeeClient.Components
+@using WiredBrainCoffee.Models
+
+<div class="menu-item">
+    <div class="menu-item-image">
+        <img src="@MenuItem.ImageFile" />
+    </div>
+    <div class="menu-item-info">
+        <p class="menu-item-title"><b>@MenuItem.Name</b></p>
+        <p class="menu-item-summary">@MenuItem.Summary</p>
+        <div class="menu-item-actions">
+            <span class="menu-item-price"><b>Price: @MenuItem.Price.ToString("C")</b></span>
+            <Button @onclick="(() => OnClickCallback.InvokeAsync(MenuItem))" Color="Color.Light">Add to Order</Button>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public MenuItem MenuItem { get; set; } = new MenuItem();
+
+    [Parameter]
+    public EventCallback<MenuItem> OnClickCallback { get; set; }
+}

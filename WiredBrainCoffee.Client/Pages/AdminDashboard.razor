@@ -1,0 +1,45 @@
+﻿@page "/admin"
+
+@inject NavigationManager NavManager
+
+<div class="page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="list-group">
+                    <li class="list-group-item active">Order History</li>
+                    <li class="list-group-item">Manage Menu</li>
+                    <li class="list-group-item">Contact History</li>
+                    <li class="list-group-item">Settings</li>
+                    <li class="list-group-item">Feedback</li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <h2>Order History:</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Items</th>
+                            <th scope="col">Notes</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < 1000; i++)
+                        {
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Coffee</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+                                <td>$5.00</td>
+                                <td>@DateTime.Now</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

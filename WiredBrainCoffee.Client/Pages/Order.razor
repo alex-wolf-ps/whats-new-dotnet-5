@@ -1,0 +1,59 @@
+﻿@page "/order"
+
+<div class="page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>New Order</h2>
+                <p>Coffee, comfort food, great prices - we have it all.</p>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <ul class="nav nav-tabs nav-fill">
+                    <li class="nav-item">
+                        <a @onclick="ShowCoffee" class="nav-link @(CoffeeTabHidden ? "" : "active")">Coffee</a>
+                    </li>
+                    <li class="nav-item">
+                        <a @onclick="ShowFood" class="nav-link @(FoodTabHidden ? "" : "active")">Food</a>
+                    </li>
+                </ul>
+                <div class="tab-containers">
+                    <div hidden="@CoffeeTabHidden" class="coffee-tab">
+                        @foreach (var item in CoffeeMenuItems)
+                        {
+                            <MenuListItem MenuItem="item" OnClickCallback="(e => AddExtras(item))" />
+                        }
+                    </div>
+                    <div hidden="@FoodTabHidden" class="food-tab hide">
+                        @foreach (var item in FoodMenuItems)
+                        {
+                            <MenuListItem MenuItem="item" OnClickCallback="(e => AddToOrder(item))" />
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="order-info">
+                    <h3>Your Current Order:</h3>
+                    @foreach (var item in CurrentOrder)
+                    {
+                        <OrderListItem OrderItem="item" OnClickCallback="(e => RemoveFromOrder(item))" />
+                    }
+                    <div class="place-order">
+                        <p class="sub-line"><span>Sales Tax:</span><span>@((OrderTotal * SalesTax).ToString("C"))</span></p>
+                        <p class="sub-line"><span>Your Total:</span><span>@((OrderTotal + (SalesTax * OrderTotal)).ToString("C"))</span></p>
+                        <hr />
+                        <div class="form-group">
+                            <p>Gift cards or coupons? Enter them here.</p>
+                            <input @bind-value="PromoCode" type="text" placeholder="Enter promo code" class="form-control" />
+                            <p hidden="@IsValidPromoCode">Sorry, invalid code.</p>
+                        </div>
+                        <Button @onclick="PlaceOrder" Color="Color.Success" class="float-right">Place Order</Button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

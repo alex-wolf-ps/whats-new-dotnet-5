@@ -1,0 +1,101 @@
+﻿@page "/"
+
+
+<header class="d-none d-md-block d-lg-block">
+    <Carousel @bind-SelectedSlide="@selectedSlide">
+        <CarouselSlide Name="1">
+            <Image Source="images/banner/banner-bag.png" Text="City Skyline" Display="Display.Block" Style="width: 100%;" />
+        </CarouselSlide>
+        <CarouselSlide Name="2">
+            <Image Source="images/banner/banner-ground.png" Text="Coffee" Display="Display.Block" Style="width: 100%;" />
+        </CarouselSlide>
+    </Carousel>
+    @code{
+        private string selectedSlide = "2";
+    }
+</header>
+<div class="container">
+    <h2 class="my-4">Welcome to Live Reload.</h2>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-image bg-ground">
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Coffee</h2>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
+                </div>
+                <div class="card-footer">
+                    <NavLink href="Order" class="btn btn-success">Full Menu</NavLink>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-image bg-bagel">
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Carbs</h2>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
+                </div>
+                <div class="card-footer">
+                    <NavLink href="Order" class="btn btn-success">Full Menu</NavLink>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-image bg-table">
+                </div>
+                <div class="card-body">
+                    <h2 class="card-title">Community</h2>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
+                </div>
+                <div class="card-footer">
+                    <NavLink href="Contact" class="btn btn-success">Get Involved</NavLink>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="row no-gutters">
+                    <div class="col-sm-5">
+                        <img class="card-img" src="images/download-small.png" alt="">
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="card-body">
+                            <h3 class="card-title">Stay Wired on the Go</h3>
+                            <p>Download our app for the best service and the latest offerings.</p>
+                            <ul>
+                                <li>Coupons and promotions</li>
+                                <li>Brainiacs club benefits</li>
+                                <li>Store locator</li>
+                                <li>Latest menu options</li>
+                                <li>Exclusive items</li>
+                                <li>Reminders</li>
+                                <li>Community connections</li>
+                            </ul>
+                            <p>Available on all the most popular app stores. Availability may vary by region.</p>
+                            <a href="#" class="btn btn-success">Download Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Contact Us</h2>
+                    <img style="width: 75%; margin: 0 auto; display: block;" src="images/placeholder.png" />
+                    <p>Questions or feedback about anything? We'd love to hear from you.</p>
+                </div>
+                <div class="card-footer">
+                    <NavLink href="Contact" class="btn btn-success">Get Involved</NavLink>
+                </div>
+            </div>
+        </div>
+        </div>
+    <hr class="mb-5">
+</div>

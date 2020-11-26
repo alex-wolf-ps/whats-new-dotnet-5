@@ -1,0 +1,72 @@
+﻿@namespace WiredBrainCoffeeClient.Components
+@using WiredBrainCoffee.Models
+
+<div class="simple-form extras">
+    <EditForm Model="Extras">
+        <div class="form-group">
+            <label for="milk">Add Milk</label>
+            <InputSelect class="form-control" @bind-Value="Extras.Milk">
+                <option selected value="None">None</option>
+                <option value="Low Fat">Low Fat</option>
+                <option value="2%">2%</option>
+                <option value="Whole">Whole Milk</option>
+            </InputSelect>
+        </div>
+        <div class="form-group">
+            <label for="creamer">Add Creamer</label>
+            <InputRadioGroup @bind-Value="Extras.Creamer">
+                <br /><InputRadio Value="CreamerOptions.None" /><span>None</span>
+                <br /><InputRadio Value="CreamerOptions.Light" /><span>Light</span>
+                <br /><InputRadio Value="CreamerOptions.Regular" /><span>Regular</span>
+                <br /><InputRadio Value="CreamerOptions.Heavy" /><span>Heavy</span>
+            </InputRadioGroup>
+        </div>
+        <div class="form-group">
+            <label for="flavor">Add Flavor</label>
+            <InputSelect class="form-control" @bind-Value="Extras.Flavor">
+                <option selected value="None">None</option>
+                <option value="Mocha">Mocha</option>
+                <option value="Vanilla">Vanilla</option>
+                <option value="Caramel">Caramel</option>
+            </InputSelect>
+        </div>
+        <div class="form-group">
+            <label for="toppings">Add Toppings</label>
+            <InputSelect class="form-control" @bind-Value="Extras.Topping">
+                <option selected value="None">None</option>
+                <option value="Whipped Cream">Whipped Cream</option>
+                <option value="Chocolate Shavings">Chocolate Shavings</option>
+                <option value="Peppermint Flakes">Peppermint Flakes</option>
+            </InputSelect>
+        </div>
+        <div class="form-group">
+            <label for="first-name">Notes</label>
+            <InputTextArea @bind-Value="Extras.Notes" class="form-control" Placeholder="Enter notes for your barista here." />
+        </div>
+    </EditForm>
+    <button @onclick="Cancel" class="btn btn-secondary">Cancel</button>
+    <button @onclick="SubmitForm" class="btn btn-success float-right">Okay</button>
+</div>
+
+@code {
+
+    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+
+    public Extras Extras = new Extras()
+    {
+        Milk = "None",
+        Flavor = "None",
+        Notes = "",
+        Topping = "None"
+    };
+
+    void SubmitForm()
+    {
+        BlazoredModal.Close(ModalResult.Ok(Extras));
+    }
+
+    void Cancel()
+    {
+        BlazoredModal.Cancel();
+    }
+}

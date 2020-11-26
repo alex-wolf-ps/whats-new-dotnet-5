@@ -1,0 +1,70 @@
+﻿@page "/Contact"
+@using System.Net.Http;
+
+@inject NavigationManager NavManager
+@inject IContactService ContactService
+
+<div class="page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Contact Us</h2>
+                <p>We'd love to hear from you! We try our best to respond within 24 hours.</p>
+                <hr />
+                <div class="contact-form">
+                    <EditForm Model="@Contact" OnValidSubmit="@HandleValidSubmit">
+                        <DataAnnotationsValidator />
+                        <Microsoft.AspNetCore.Components.Forms.ValidationSummary />
+                        <div class="form-group">
+                            <label for="name">Name: </label>
+                            <InputText id="firstName" class="form-control" @bind-Value="@Contact.Name" placeholder="Enter first name"></InputText>
+                            <ValidationMessage For="@(() => Contact.Name)" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email: </label>
+                            <InputText id="email" class="form-control" @bind-Value="@Contact.Email" placeholder="Enter email"></InputText>
+                            <ValidationMessage For="@(() => Contact.Email)" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Phone: </label>
+                            <InputText id="email" class="form-control" @bind-Value="@Contact.Phone" placeholder="Enter phone"></InputText>
+                            <ValidationMessage For="@(() => Contact.Phone)" />
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message: </label>
+                            <InputTextArea id="message" class="form-control" @bind-Value="@Contact.Message" placeholder="Enter message"></InputTextArea>
+                            <ValidationMessage For="@(() => Contact.Message)" />
+                        </div>
+
+                        <div class="form-group">
+                            <InputFile OnChange="@OnInputFileChange" multiple />
+                        </div>
+
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </EditForm>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <MailingList />
+                <hr />
+                <ContactInfo />
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+    public Contact Contact = new Contact();
+
+    IReadOnlyList<IBrowserFile> selectedFiles;
+
+    private void OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        selectedFiles = e.GetMultipleFiles(3);
+    }
+
+    private async void HandleValidSubmit()
+    {
+        await ContactService.PostContact(Contact, selectedFiles);
+        NavManager.NavigateTo("contact-confirmation");
+    }
+}
