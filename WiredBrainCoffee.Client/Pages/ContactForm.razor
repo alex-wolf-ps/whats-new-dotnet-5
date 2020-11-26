@@ -37,7 +37,6 @@
                         </div>
 
                         <div class="form-group">
-                            <InputFile OnChange="@OnInputFileChange" multiple />
                         </div>
 
                         <button type="submit" class="btn btn-success">Submit</button>
@@ -55,16 +54,9 @@
 @code {
     public Contact Contact = new Contact();
 
-    IReadOnlyList<IBrowserFile> selectedFiles;
-
-    private void OnInputFileChange(InputFileChangeEventArgs e)
-    {
-        selectedFiles = e.GetMultipleFiles(3);
-    }
-
     private async void HandleValidSubmit()
     {
-        await ContactService.PostContact(Contact, selectedFiles);
+        await ContactService.PostContact(Contact);
         NavManager.NavigateTo("contact-confirmation");
     }
 }
