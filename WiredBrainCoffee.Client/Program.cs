@@ -37,8 +37,8 @@ namespace WiredBrainCoffee.Client
                 client.BaseAddress = new Uri("https://localhost:3001/"));
             builder.Services.AddHttpClient<IContactService, ContactService>(client =>
                 client.BaseAddress = new Uri("https://localhost:3001/"));
-
-            int nProcessID = Process.GetCurrentProcess().Id;
+            builder.Services.AddHttpClient<IOrderService, OrderService>(client =>
+                client.BaseAddress = new Uri("https://localhost:3001/"));
 
             var host = builder.Build();
 

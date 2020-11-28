@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WiredBrainCoffee.Api.Services;
 
 namespace WiredBrainCoffee.Api
 {
@@ -28,6 +29,7 @@ namespace WiredBrainCoffee.Api
         {
 
             services.AddControllers();
+            services.AddSingleton<OrderService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WiredBrainCoffee.Api", Version = "v1" });
