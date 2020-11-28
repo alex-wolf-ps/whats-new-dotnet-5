@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Blazored.Modal;
 using WiredBrainCoffee.Services;
+using System.Diagnostics;
+using System.IO;
 
 namespace WiredBrainCoffee.Client
 {
@@ -35,6 +37,8 @@ namespace WiredBrainCoffee.Client
                 client.BaseAddress = new Uri("https://localhost:3001/"));
             builder.Services.AddHttpClient<IContactService, ContactService>(client =>
                 client.BaseAddress = new Uri("https://localhost:3001/"));
+
+            int nProcessID = Process.GetCurrentProcess().Id;
 
             var host = builder.Build();
 

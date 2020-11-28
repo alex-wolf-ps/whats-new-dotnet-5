@@ -19,7 +19,12 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
+	<ItemGroup>
+		<BlazorWebAssemblyLazyLoad Include="WiredBrainCoffee.Components.dll" />
+	</ItemGroup>
+
   <ItemGroup>
+    <ProjectReference Include="..\WiredBrainCoffee.Components\WiredBrainCoffee.Components.csproj" />
     <ProjectReference Include="..\WiredBrainCoffee.Models\WiredBrainCoffee.Models.csproj" />
   </ItemGroup>
 
