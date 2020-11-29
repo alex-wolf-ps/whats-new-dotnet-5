@@ -10,7 +10,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Items</th>
                 <th scope="col">Notes</th>
-                <th scope="col">Total</th>
+                <th scope="col">Total Price</th>
                 <th scope="col">Date</th>
             </tr>
         </thead>
@@ -27,7 +27,7 @@
                     }
                 </td>
                 <td>@order.Notes</td>
-                <td>@order.Total</td>
+                <td>@order.Total.ToString("C")</td>
                 <td>@order.Created</td>
             </tr>
             }
