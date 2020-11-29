@@ -42,7 +42,7 @@ namespace WiredBrainCoffee.Api.Services
                     Created = DateTime.Now,
                     OrderNumber = rnd.Next(1000, 10000),
                     PromoCode = "None",
-                    Notes = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    Notes = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
                     Items = new List<OrderItem>() { new OrderItem() { Id = 1, Name = sampleItems[rnd.Next(0, 9)], Price = 5 } }
                 });
             }

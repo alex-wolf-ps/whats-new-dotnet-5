@@ -223,3 +223,16 @@ input[type="radio"] {
 .blazored-modal-container {
     z-index: 5000;
 }
+
+.order-history tr {
+    height: 150px;
+}
+
+.card-body {
+    display: flex;
+    height: 125px;
+}
+
+.card-body span {
+    padding: 5px 10px;
+}

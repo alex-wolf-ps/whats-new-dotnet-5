@@ -1,38 +1,23 @@
 ﻿@namespace WiredBrainCoffee.Admin
 @inject IOrderService OrderService
-
+@inject HttpClient Http
+ 
 <div>
     <h2>Order History:</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">#</th>
-                <th scope="col">Items</th>
-                <th scope="col">Notes</th>
-                <th scope="col">Total Price</th>
-                <th scope="col">Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(var order in orderHistory.Orders)
-            {
-            <tr>
-                <th>@order.Id</th>
-                <th>@order.OrderNumber</th>
-                <td>
-                    @foreach (var item in order.Items)
-                    {
-                        <p>@item.Name</p>
-                    }
-                </td>
-                <td>@order.Notes</td>
-                <td>@order.Total.ToString("C")</td>
-                <td>@order.Created</td>
-            </tr>
-            }
-        </tbody>
-    </table>
+    <div class="order-history">
+        @foreach(var order in orderHistory.Orders)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <span><strong>@order.Id</strong></span>
+                    <span>@order.Notes</span>
+                    <span>@order.Total.ToString("C")</span>
+                    <span>@order.Created</span>
+                    <span><Button class="btn btn-success">Details</Button></span>
+                </div>
+            </div>
+        }
+    </div>
 </div>
 
 
