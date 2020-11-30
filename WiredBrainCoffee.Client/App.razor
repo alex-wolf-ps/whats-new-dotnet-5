@@ -4,7 +4,7 @@
 @inject LazyAssemblyLoader assemblyLoader
 
 <CascadingBlazoredModal>
-    <Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="@lazyLoadedAssemblies" OnNavigateAsync="@OnNavigateAsync">
+    <Router AppAssembly="@typeof(Program).Assembly" OnNavigateAsync="@OnNavigateAsync">
         <Found Context="routeData">
             <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         </Found>
@@ -17,14 +17,8 @@
 </CascadingBlazoredModal>
 
 @code {
-    private List<Assembly> lazyLoadedAssemblies = new List<Assembly>();
-
     private async Task OnNavigateAsync(NavigationContext context)
     {
-        if (context.Path.Contains("Contact"))
-        {
-            var assemblies = await assemblyLoader.LoadAssembliesAsync(new List<string>() { "WiredBrainCoffee.Components.dll" });
-            lazyLoadedAssemblies.AddRange(assemblies);
-        }
+        
     }
 }
