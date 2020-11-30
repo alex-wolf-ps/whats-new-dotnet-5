@@ -60,7 +60,7 @@ namespace WiredBrainCoffee.Client.Pages
             }
         }
 
-        public void AddToOrder(MenuItem item)
+        private void AddToOrder(MenuItem item)
         {
             CurrentOrder.Add(new OrderItem()
             {
@@ -73,13 +73,13 @@ namespace WiredBrainCoffee.Client.Pages
             OrderTotal += item.Price;
         }
 
-        public void RemoveFromOrder(OrderItem item)
+        private void RemoveFromOrder(OrderItem item)
         {
             CurrentOrder.Remove(item);
             OrderTotal -= item.Price;
         }
 
-        public async Task PlaceOrder()
+        private async Task PlaceOrder()
         {
             var promoModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/promocode.js");
             IsValidPromoCode = await promoModule.InvokeAsync<bool>("VerifyPromoCode", PromoCode);

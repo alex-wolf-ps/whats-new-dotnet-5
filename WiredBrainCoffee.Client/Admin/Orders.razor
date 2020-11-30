@@ -3,10 +3,10 @@
 @inject HttpClient Http
  
 <div>
-    <h2>Order History:</h2>
+    <h2>Order History</h2>
+    <hr />
     <div class="order-history">
-        @foreach(var order in orderHistory.Orders)
-        {
+        <Virtualize ItemsProvider="LoadOrders" Context="order" ItemSize="127">
             <div class="card">
                 <div class="card-body">
                     <span><strong>@order.Id</strong></span>
@@ -16,16 +16,16 @@
                     <span><Button class="btn btn-success">Details</Button></span>
                 </div>
             </div>
-        }
+        </Virtualize>
     </div>
 </div>
 
 
 @code {
-    private OrderHistory orderHistory { get; set; } = new OrderHistory();
-
-    protected async override Task OnInitializedAsync()
+    private async ValueTask<ItemsProviderResult<Order>> LoadOrders(ItemsProviderRequest request)
     {
-        orderHistory = await OrderService.GetOrders();
+        var orderHistory = await OrderService.GetPaginatedOrders(request.StartIndex, request.Count);
+
+        return new ItemsProviderResult<Order>(orderHistory.Orders, orderHistory.TotalOrderCount);
     }
 }
