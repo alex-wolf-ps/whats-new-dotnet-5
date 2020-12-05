@@ -17,7 +17,7 @@ namespace WiredBrainCoffee.Models
 
         public string Message { get; set; }
 
-        public ContactReason Reason { get; set; }
+        public DateTime SubmittedTime { get; set; }
 
         public List<UploadedFile> AttachedFiles { get; set; } = new List<UploadedFile>();
     }

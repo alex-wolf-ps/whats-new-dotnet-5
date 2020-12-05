@@ -84,8 +84,6 @@ namespace WiredBrainCoffee.Client.Pages
             var promoModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/promocode.js");
             IsValidPromoCode = await promoModule.InvokeAsync<bool>("VerifyPromoCode", PromoCode);
 
-            throw new Exception("Bad problems happened");
-
             NavManager.NavigateTo("order-confirmation");
         }
 

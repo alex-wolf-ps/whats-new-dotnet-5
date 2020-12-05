@@ -45,6 +45,8 @@
                 </div>
             </div>
             <div class="col-md-4">
+                <WiredBrainCoffee.Client.Components.Chat />
+                <hr />
                 <MailingList />
                 <hr />
                 <ContactInfo />
@@ -64,6 +66,7 @@
 
     private async void HandleValidSubmit()
     {
+        Contact.SubmittedTime = DateTime.UtcNow;
         await ContactService.PostContact(Contact, selectedFiles);
         NavManager.NavigateTo("contact-confirmation");
     }

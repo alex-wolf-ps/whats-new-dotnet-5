@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace WiredBrainCoffee.Api
@@ -18,9 +19,17 @@ namespace WiredBrainCoffee.Api
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+            .ConfigureLogging(logging =>
+            {
+                logging.AddJsonConsole(options =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    options.JsonWriterOptions = new JsonWriterOptions()
+                    { Indented = true };
                 });
+            })
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            });
     }
 }
