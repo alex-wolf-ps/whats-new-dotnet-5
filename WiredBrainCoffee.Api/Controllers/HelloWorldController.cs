@@ -9,6 +9,8 @@ namespace WiredBrainCoffee.Api.Controllers
         [HttpGet]
         public IActionResult GetGreeting()
         {
+            throw new System.Exception("A problem occured.");
+
             return Ok("Hello world");
         }
     }
