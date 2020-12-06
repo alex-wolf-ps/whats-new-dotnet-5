@@ -34,7 +34,7 @@ namespace WiredBrainCoffee.Api
             services.AddSignalR()
             .AddHubOptions<ChatHub>(options =>
             {
-                options.AddFilter<HubLogFilter>();
+                options.AddFilter<ChatHubLogFilter>();
             });
             services.AddControllers();
             services.AddSingleton<OrderService>();
