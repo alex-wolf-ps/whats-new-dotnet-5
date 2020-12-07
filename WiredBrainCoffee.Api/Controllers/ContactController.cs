@@ -31,7 +31,6 @@ namespace WiredBrainCoffee.Api.Controllers
         [HttpPost()]
         public void Post(Contact contact)
         {
-            throw new Exception("Bad data");
             // Todo: Save contact info to the database
 
             // Write uploaded files to images directory
