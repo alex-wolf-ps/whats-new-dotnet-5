@@ -19,14 +19,6 @@ namespace WiredBrainCoffee.Api
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-            .ConfigureLogging(logging =>
-            {
-                logging.AddJsonConsole(options =>
-                {
-                    options.JsonWriterOptions = new JsonWriterOptions()
-                    { Indented = true };
-                });
-            })
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<Startup>();

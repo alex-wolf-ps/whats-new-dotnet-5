@@ -66,7 +66,6 @@
 
     private async void HandleValidSubmit()
     {
-        Contact.SubmittedTime = DateTime.UtcNow;
         await ContactService.PostContact(Contact, selectedFiles);
         NavManager.NavigateTo("contact-confirmation");
     }
