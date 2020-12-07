@@ -2,21 +2,8 @@
 @implements IAsyncDisposable
 @using Microsoft.AspNetCore.SignalR.Client
 
-<div class="form-group">
-    <label>
-        User:
-        <input @bind="userInput" />
-    </label>
-</div>
-<div class="form-group">
-    <label>
-        Message:
-        <input @bind="messageInput" size="50" />
-    </label>
-</div>
-<button @onclick="Send" disabled="@(!IsConnected)">Send</button>
-
-<hr>
+<h2>Chat with us</h2>
+<hr />
 
 <ul id="messagesList">
     @foreach (var message in messages)
@@ -24,11 +11,20 @@
         <li>@message</li>
     }
 </ul>
+<div class="form-group">
+    <label for="name">Name: </label>
+    <input class="form-control" @bind="nameInput" />
+</div>
+<div class="form-group">
+    <label for="name">Message: </label>
+    <textarea class="form-control" @bind="messageInput" size="50" />
+</div>
+<button @onclick="Send" class="btn btn-success" disabled="@(!IsConnected)">Send</button>
 
 @code {
     private HubConnection hubConnection;
     private List<string> messages = new List<string>();
-    private string userInput;
+    private string nameInput;
     private string messageInput;
 
     protected override async Task OnInitializedAsync()
@@ -47,8 +43,9 @@
         await hubConnection.StartAsync();
     }
 
-    void Send() {
-        hubConnection.SendAsync("SendMessage", userInput, messageInput);
+    void Send()
+    {
+        hubConnection.SendAsync("SendMessage", nameInput, messageInput);
     }
 
     public bool IsConnected =>

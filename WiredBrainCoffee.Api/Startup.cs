@@ -31,11 +31,11 @@ namespace WiredBrainCoffee.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSignalR()
-            .AddHubOptions<ChatHub>(options =>
+            services.AddSignalR().AddHubOptions<ChatHub>(options =>
             {
                 options.AddFilter<ChatHubLogFilter>();
             });
+
             services.AddControllers();
             services.AddSingleton<OrderService>();
             services.AddSwaggerGen(c =>
