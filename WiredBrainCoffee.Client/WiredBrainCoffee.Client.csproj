@@ -14,7 +14,6 @@
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="5.0.0" />
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.4" />
-    <PackageReference Include="WiredBrainCoffee.Components" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
